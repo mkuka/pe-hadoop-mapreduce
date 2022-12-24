@@ -1,5 +1,5 @@
 # pe-hadoop-mapreduce
-Performance Evaluation of Hadoop MapReduce Framework
+Performance evaluation of [Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) framework using different test cases on Windows platform. MapReduce framework with [HDFS](https://csup.soc.pdn.ac.lk/) (Hadoop Distributed File System) is one of the ways to deal with big data storage and retrieval, it can be used in different platforms/cloud services such as [AWS](https://aws.amazon.com/). For this experiment we use [k-means](https://en.wikipedia.org/wiki/K-means_clustering) algorithm using MapReduce framework implemented in Java and compare the result of clustering for varying size of datasets. The result demonstrates that proposed k-means obtains higher performance and outperformed while clustering large datasets. Here we have used different sizes of the data to analysis the performance of MapReduce framework using a single node cluster in a local machine. We also deployed the tool on AWS.
 ## Setup Hadoop on Windows
 
 - Download Hadoop, [Hadoop 3.2.1](https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz), unzip, and store it.
