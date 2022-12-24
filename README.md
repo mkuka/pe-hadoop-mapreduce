@@ -64,3 +64,13 @@ Performance Evaluation of Hadoop MapReduce Framework
   </property>
 </configuration>
 ```
+- Start services
+```
+Initialize HDFS:
+$ hdfs namenode -format
+Start HDFS daemons:
+$ %HADOOP_HOME%\sbin\start-dfs.cmd
+Start YARN daemons:
+$ %HADOOP_HOME%\sbin\start-yarn.cmd
+```
+- Compile our project and Run mapreduce jobs
