@@ -83,13 +83,21 @@ $ hadoop classpath
 ```
 ### Compile the k-means test codes and run on hadoop-mapreduce
 ```
-hadoop fs -ls %HDFS_LOC%/
-cd pe-hadoop-mapreduce\src\k-means
-javac -cp %HADOOP_CP% C:\pe-hadoop-mapreduce\src\k-means\*.java -d classes
-cd classes
-jar -cvf Kmeans.jar *.class
-dir
-hadoop 
-hadoop fs -cat %HDFS_LOC%/df_250_output/centroids.txt
-hadoop fs -copyToLocal %HDFS_LOC%/df_250_output C:\pe-hadoop-mapreduce\results\k-means\
+$ cd pe-hadoop-mapreduce\src\k-means
+$ hadoop fs -ls %HDFS_LOC%/
+$ hadoop fs -copyFromLocal C:\pe-hadoop-mapreduce\data\k-means %HDFS_LOC%/df_250
+$ hadoop fs -ls %HDFS_LOC%/df_250
+$ javac -cp %HADOOP_CP% C:\pe-hadoop-mapreduce\src\k-means\*.java -d classes
+$ cd classes
+$ jar -cvf Kmeans.jar *.class
+$ dir
+$ hadoop jar Kmeans.jar Kmeans %HDFS_LOC%/df_250 %HDFS_LOC/output_df_250
+$ hadoop fs -cat %HDFS_LOC%/output_df_250/centroids.txt
+$ hadoop fs -copyToLocal %HDFS_LOC%/output_df_250 C:\pe-hadoop-mapreduce\results\k-means\
+```
+
+### Sample Result
+```
+7.94537,0.58977,0.18093,2.13241,0.08138,8.9537,26.53704,0.99685,3.35426,0.62824,9.79908
+7.73247,0.53065,0.24974,2.1013,0.12039,16.98701,58.67533,0.99657,3.3161,0.7087,9.87273
 ```
