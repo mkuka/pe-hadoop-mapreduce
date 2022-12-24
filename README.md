@@ -73,4 +73,23 @@ $ %HADOOP_HOME%\sbin\start-dfs.cmd
 Start YARN daemons:
 $ %HADOOP_HOME%\sbin\start-yarn.cmd
 ```
-- Compile our project and Run mapreduce jobs
+## Compile our project and Run mapreduce jobs
+### Set environment variables `HADOOP_CP` and `HDFS_LOC`
+```
+1. Get hadoop classpaths
+$ hadoop classpath
+2. Copy the paths obtained from the previous command and set to the environment variables `HADOOP_CP`
+3. Create an environment variable `HDFS_LOC` and set the value as `hdfs://localhost:19000` 
+```
+### Compile the k-means test codes and run on hadoop-mapreduce
+```
+hadoop fs -ls %HDFS_LOC%/
+cd pe-hadoop-mapreduce\src\k-means
+javac -cp %HADOOP_CP% C:\pe-hadoop-mapreduce\src\k-means\*.java -d classes
+cd classes
+jar -cvf Kmeans.jar *.class
+dir
+hadoop 
+hadoop fs -cat %HDFS_LOC%/df_250_output/centroids.txt
+hadoop fs -copyToLocal %HDFS_LOC%/df_250_output C:\pe-hadoop-mapreduce\results\k-means\
+```
