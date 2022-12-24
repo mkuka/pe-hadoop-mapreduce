@@ -15,7 +15,7 @@ Performance Evaluation of Hadoop MapReduce Framework
   </property>
 </configuration>
 ```
-  - Update `configuration` element of the `mapred-site.xml` as follows,
+- - Update `configuration` element of the `mapred-site.xml` as follows,
 ```
 <configuration>
   <property>
@@ -23,8 +23,44 @@ Performance Evaluation of Hadoop MapReduce Framework
     <value>yarn</value>
   </property>
   <property> 
-    <name>mapreduce.application.classpath</name>    <value>%HADOOP_HOME%/share/hadoop/mapreduce/*,%HADOOP_HOME%/share/hadoop/mapreduce/lib/*,%HADOOP_HOME%/share/hadoop/common/*,%HADOOP_HOME%/share/hadoop/common/lib/*,%HADOOP_HOME%/share/hadoop/yarn/*,%HADOOP_HOME%/share/hadoop/yarn/lib/*,%HADOOP_HOME%/share/hadoop/hdfs/*,%HADOOP_HOME%/share/hadoop/hdfs/lib/*</value>
+    <name>mapreduce.application.classpath</name>
+    <value>
+%HADOOP_HOME%/share/hadoop/mapreduce/*,%HADOOP_HOME%/share/hadoop/mapreduce/lib/*,%HADOOP_HOME%/share/hadoop/common/*,%HADOOP_HOME%/share/hadoop/common/lib/*,%HADOOP_HOME%/share/hadoop/yarn/*,%HADOOP_HOME%/share/hadoop/yarn/lib/*,%HADOOP_HOME%/share/hadoop/hdfs/*,%HADOOP_HOME%/share/hadoop/hdfs/lib/*
+    </value>
   </property>
 </configuration>
 ```
-
+- - Update `configuration` element of the `yarn-site.xml` as follows,
+```
+<configuration>
+  <property>
+    <name>yarn.resourcemanager.hostname</name>
+    <value>localhost</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.env-whitelist</name>
+    <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+  </property>
+</configuration>
+```
+- - Create two directories for `namenode directory` and `data directory` and update `configuration` element of the `hdfs-site.xml` as follows to configure those directories,
+```
+<configuration>
+   <property>
+    <name>dfs.replication</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:///C:/hadoop-3.2.1/data/dfs/namenode</value>
+  </property>
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:///C:/hadoop-3.2.1/data/dfs/data</value>
+  </property>
+</configuration>
+```
