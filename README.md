@@ -15,7 +15,8 @@ Performance Evaluation of Hadoop MapReduce Framework
   </property>
 </configuration>
 ```
- - Update `configuration` element of the `mapred-site.xml` as follows,
+  - Update `configuration` element of the `mapred-site.xml` as follows,
+```
 <configuration>
   <property>
     <name>mapreduce.framework.name</name>
